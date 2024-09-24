@@ -1,0 +1,1 @@
+ALTER TABLE "iot" ADD COLUMN "model" text;

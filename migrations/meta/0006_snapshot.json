@@ -1,0 +1,229 @@
+{
+  "id": "ce376697-ee01-4811-ad90-d2cd50dd2a12",
+  "prevId": "2ba824e1-8b24-45bd-a65b-616b7c8dca67",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.appTemp": {
+      "name": "appTemp",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "surroundingTemp": {
+          "name": "surroundingTemp",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "coilTemp": {
+          "name": "coilTemp",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "surroundingHumidity": {
+          "name": "surroundingHumidity",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "outsideTemp": {
+          "name": "outsideTemp",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "outsideHumidity": {
+          "name": "outsideHumidity",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "outsideCoilTemp": {
+          "name": "outsideCoilTemp",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "iotID": {
+          "name": "iotID",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "appTemp_iotID_iot_id_fk": {
+          "name": "appTemp_iotID_iot_id_fk",
+          "tableFrom": "appTemp",
+          "tableTo": "iot",
+          "columnsFrom": [
+            "iotID"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.efficiencyPoint": {
+      "name": "efficiencyPoint",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "iotID": {
+          "name": "iotID",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "minVal": {
+          "name": "minVal",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q20": {
+          "name": "q20",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q40": {
+          "name": "q40",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q60": {
+          "name": "q60",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "q80": {
+          "name": "q80",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "maxVal": {
+          "name": "maxVal",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "efficiencyPoint_iotID_iot_id_fk": {
+          "name": "efficiencyPoint_iotID_iot_id_fk",
+          "tableFrom": "efficiencyPoint",
+          "tableTo": "iot",
+          "columnsFrom": [
+            "iotID"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.iot": {
+      "name": "iot",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "detail": {
+          "name": "detail",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "brand": {
+          "name": "brand",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "model": {
+          "name": "model",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "owner": {
+          "name": "owner",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ownerEmail": {
+          "name": "ownerEmail",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
